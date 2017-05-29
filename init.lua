@@ -12,3 +12,24 @@ local function eq(x, y)
 		return x == y
 	end
 end
+local function elem(x, xs)
+	if x == nil then return true end
+	for _, i in pairs(x) do
+		if eq(i, x) then return true end
+	end
+	return false
+end
+local function notElem(x, xs)
+	return not elem(x, xs)
+end
+local function filter(f, xs)
+	r = {}
+	for _, x in pairs(xs) do
+		if f(x) then
+			r[#r+1] = x
+		end
+	end
+	return r
+end
+
+nofloating = {}
