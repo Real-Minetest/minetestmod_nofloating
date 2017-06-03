@@ -29,7 +29,7 @@ local function eq(x, y)
 end
 local function elem(x, xs)
 	if x == nil then return true end
-	for _, i in pairs(x) do
+	for _, i in pairs(xs) do
 		if eq(i, x) then return true end
 	end
 	return false
