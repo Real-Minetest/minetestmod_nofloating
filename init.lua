@@ -45,7 +45,7 @@ function nofloating.find(max, ...)
 	while #n ~= 0 do
 		local a = {}
 		for _, x in ipairs(n) do
-			local name = minetest.get_node(x)
+			local name = minetest.get_node(x).name
 			if not (name == "air" or name == "ignore" or elem(x, r)) then
 				if #r >= max then return r end
 				r[#r+1] = x
@@ -76,6 +76,5 @@ end
 
 local old_check_single_for_falling = minetest.check_single_for_falling
 function minetest.check_single_for_falling(pos)
-	nofloating.check(pos)
-	return minetest.check_single_for_falling(pos)
+	return nofloating.check(pos) or minetest.check_single_for_falling(pos)
 end
